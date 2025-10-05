@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground">
       <main className="flex-1 flex items-center justify-center">
-        <section className="container grid items-center justify-center text-center gap-6 pb-8 pt-6 md:py-10">
+        <section className="container grid items-center justify-center text-center gap-6 pb-8 pt-6 md:py-10 animate-fade-in-up">
           <div className="flex flex-col items-center gap-4">
             <div className="relative w-32 h-32 rounded-full overflow-hidden mb-4">
               <Image
@@ -27,17 +27,17 @@ export default function Home() {
             </p>
             <div className="flex gap-4 mt-4">
               <Link href="#">
-                <Button variant="outline" size="icon">
+                <Button variant="outline" size="icon" className="transition-transform hover:scale-110">
                   <Twitter />
                 </Button>
               </Link>
               <Link href="#">
-                <Button variant="outline" size="icon">
+                <Button variant="outline" size="icon" className="transition-transform hover:scale-110">
                   <Github />
                 </Button>
               </Link>
               <Link href="#">
-                <Button variant="outline" size="icon">
+                <Button variant="outline" size="icon" className="transition-transform hover:scale-110">
                   <Linkedin />
                 </Button>
               </Link>
