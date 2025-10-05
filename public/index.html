@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Salman Fares</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/lucide-react/dist/lucide-react.js"></script>
+    <style>
+      :root {
+        --background: 224 71% 4%;
+        --foreground: 213 31% 91%;
+        --primary: 130 80% 50%;
+        --border: 215 28% 17%;
+        --accent: 130 80% 40%;
+      }
+      body {
+        background-color: hsl(var(--background));
+        color: hsl(130, 80%, 50%);
+        font-family: 'Inconsolata', monospace;
+        font-size: 1.125rem;
+        line-height: 1.75rem;
+        display: flex;
+        min-height: 100vh;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      .terminal-window {
+        width: 100%;
+        max-width: 56rem;
+        border-radius: 0.5rem;
+        border: 1px solid hsl(var(--border));
+        background-color: rgba(17, 24, 39, 0.5);
+        padding: 1.5rem;
+        box-shadow: 0 0 20px rgba(74, 222, 128, 0.5);
+      }
+      .title-bar {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+      }
+      .dot {
+        height: 1rem;
+        width: 1rem;
+        border-radius: 9999px;
+      }
+      .dot-red { background-color: #ef4444; }
+      .dot-yellow { background-color: #f59e0b; }
+      .dot-green { background-color: #22c55e; }
+
+      .content {
+        overflow: hidden;
+      }
+      .line {
+        opacity: 0;
+        animation: fadeIn 0.5s forwards;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .prompt {
+        color: hsl(130, 40%, 60%);
+        margin-right: 0.5rem;
+      }
+      .link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: #67e8f9;
+        text-decoration: underline;
+      }
+      .link:hover {
+        color: #a5f3fc;
+      }
+      .icon {
+        width: 1rem;
+        height: 1rem;
+        display: inline-block;
+      }
+      .cursor {
+        display: inline-block;
+        width: 0.5em;
+        height: 1.2em;
+        background-color: hsl(var(--primary));
+        animation: blink 1s step-end infinite;
+        vertical-align: bottom;
+      }
+      @keyframes fadeIn {
+        to {
+          opacity: 1;
+        }
+      }
+      @keyframes blink {
+        from, to {
+          background-color: transparent;
+        }
+        50% {
+          background-color: hsl(var(--primary));
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="terminal-window">
+      <div class="title-bar">
+        <div class="dot dot-red"></div>
+        <div class="dot dot-yellow"></div>
+        <div class="dot dot-green"></div>
+      </div>
+      <div id="content" class="content"></div>
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const lines = [
+          'Initializing SALMAN v1.0.0...',
+          'Scanning for user information...',
+          'USER: Salman Fares',
+          'STATUS: Software Engineer',
+          'LOCATION: United Arab Emirates',
+          '',
+          'Fetching social links...',
+          { text: '> GitHub: https://github.com/salmntic', href: 'https://github.com/salmntic', icon: 'Github' },
+          { text: '> LinkedIn: https://linkedin.com/in/salman-fares', href: 'https://linkedin.com/in/salman-fares', icon: 'Linkedin' },
+          { text: '> Twitter: https://twitter.com/salmntic', href: 'https://twitter.com/salmntic', icon: 'Twitter' },
+          '',
+          'Loading business details...',
+          { text: '> TÉQOURT: teqourt.com', href: 'https://teqourt.com', icon: 'BlockLogo' },
+          '',
+          'All systems operational.',
+          'Welcome to my portfolio.',
+        ];
+        
+        const SvgBlockLogo = `<svg width="1em" height="1em" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg" class="icon"><path fill-rule="evenodd" clip-rule="evenodd" d="M39.125 64C39.125 49.7917 50.3333 39.125 64 39.125C77.6667 39.125 88.875 49.7917 88.875 64C88.875 78.2083 77.6667 88.875 64 88.875C50.3333 88.875 39.125 78.2083 39.125 64ZM64 0C28.6667 0 0 28.6667 0 64C0 99.3333 28.6667 128 64 128C99.3333 128 128 99.3333 128 64C128 28.6667 99.3333 0 64 0Z" fill="currentColor"/></svg>`;
+
+        const contentEl = document.getElementById('content');
+        let currentLine = 0;
+        let visibleLines = [];
+
+        const render = () => {
+          contentEl.innerHTML = '';
+          visibleLines.forEach((lineData, index) => {
+            const p = document.createElement('p');
+            p.className = 'line';
+            p.style.animationDelay = `${index * 0.1}s`;
+            
+            const promptSpan = document.createElement('span');
+            promptSpan.className = 'prompt';
+            promptSpan.textContent = '$';
+            p.appendChild(promptSpan);
+
+            if (typeof lineData === 'string') {
+              const textSpan = document.createElement('span');
+              textSpan.textContent = lineData;
+              p.appendChild(textSpan);
+            } else {
+              const a = document.createElement('a');
+              a.href = lineData.href;
+              a.target = '_blank';
+              a.rel = 'noopener noreferrer';
+              a.className = 'link';
+
+              if (lineData.icon === 'BlockLogo') {
+                a.innerHTML += SvgBlockLogo;
+              } else {
+                 const iconEl = document.createElement('i');
+                 iconEl.setAttribute('data-lucide', lineData.icon.toLowerCase());
+                 iconEl.className = 'icon';
+                 a.appendChild(iconEl);
+              }
+
+              const textSpan = document.createElement('span');
+              textSpan.textContent = lineData.text.substring(lineData.text.indexOf('>') + 2);
+              a.appendChild(textSpan);
+              p.appendChild(a);
+            }
+            contentEl.appendChild(p);
+          });
+          
+          // Add cursor
+          if (currentLine < lines.length) {
+              const cursorLine = document.createElement('p');
+              cursorLine.innerHTML = '<span class="prompt">$</span><span class="cursor"></span>';
+              contentEl.appendChild(cursorLine);
+          } else {
+              const lastLine = contentEl.querySelector('.line:last-child');
+              if(lastLine) {
+                  lastLine.innerHTML += '<span class="cursor"></span>';
+              }
+          }
+          lucide.createIcons();
+        };
+
+        const interval = setInterval(() => {
+          if (currentLine < lines.length) {
+            visibleLines.push(lines[currentLine]);
+            currentLine++;
+            render();
+          } else {
+            clearInterval(interval);
+            render(); // final render to place cursor correctly
+          }
+        }, 100);
+      });
+    </script>
+  </body>
+</html>

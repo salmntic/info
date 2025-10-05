@@ -5,6 +5,8 @@ const nextConfig: NextConfig = {
   output: 'export',
   // This is the key fix for GitHub Pages. It tells Next.js where to find the assets.
   assetPrefix: process.env.NODE_ENV === 'production' ? '/salmntic.github.io/' : undefined,
+  // This ensures that the exported site has an index.html file
+  trailingSlash: true,
   typescript: {
     ignoreBuildErrors: true,
   },
@@ -43,5 +45,3 @@ const nextConfig: NextConfig = {
 };
 
 export default nextConfig;
-
-    
