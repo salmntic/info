@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { placeholderImages } from '@/lib/placeholder-images';
-import { Github, Linkedin, Twitter } from 'lucide-react';
+import { Github, Linkedin, Twitter, Facebook } from 'lucide-react';
 import Link from 'next/link';
 
 export default function Home() {
@@ -39,6 +39,11 @@ export default function Home() {
               <Link href="#">
                 <Button variant="outline" size="icon" className="transition-transform hover:scale-110">
                   <Linkedin />
+                </Button>
+              </Link>
+              <Link href="https://www.facebook.com/salmontic">
+                <Button variant="outline" size="icon" className="transition-transform hover:scale-110">
+                  <Facebook />
                 </Button>
               </Link>
             </div>
