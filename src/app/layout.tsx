@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Viga } from 'next/font/google';
 import './globals.css';
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
+const viga = Viga({ subsets: ['latin'], weight: '400', variable: '--font-viga' });
 
 export const metadata: Metadata = {
   title: 'Salman Fares',
@@ -16,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <body className={`${inter.variable} font-body antialiased`}>
+      <body className={`${viga.variable} font-body antialiased`}>
         {children}
       </body>
     </html>
