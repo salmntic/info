@@ -23,7 +23,7 @@ export default function Home() {
               Salman Fares
             </h1>
             <p className="max-w-[700px] text-lg text-muted-foreground">
-              Just a folk who loves to stare at the sky.
+              Meet myself salman fares who love to stare at the sky loves to watch animes sometimes do annoy and listen music nothing else have a point of sale job experience at local restaurants
             </p>
             <div className="flex gap-4 mt-4">
               <Link href="#">
