@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import { Button } from '@/components/ui/button';
 import { placeholderImages } from '@/lib/placeholder-images';
 import { Github, Linkedin, Twitter, Facebook, Instagram, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
