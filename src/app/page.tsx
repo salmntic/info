@@ -1,11 +1,10 @@
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
 import { placeholderImages } from '@/lib/placeholder-images';
+import { Github, Linkedin, Twitter } from 'lucide-react';
+import Link from 'next/link';
 
 export default function Home() {
-  const featuredWork = placeholderImages.slice(0, 3);
-
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground">
       <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -13,17 +12,15 @@ export default function Home() {
           <a href="#" className="text-2xl font-bold">
             SF
           </a>
-          <nav className="hidden md:flex gap-4">
+          <nav className="flex items-center gap-4">
             <Button variant="ghost">About</Button>
-            <Button variant="ghost">Work</Button>
             <Button variant="ghost">Contact</Button>
           </nav>
-          <Button>Hire Me</Button>
         </div>
       </header>
       <main className="flex-1">
-        <section className="container grid items-center gap-6 pb-8 pt-6 md:py-10">
-          <div className="flex flex-col items-start gap-2">
+        <section className="container grid items-center justify-center text-center gap-6 pb-8 pt-6 md:py-10">
+          <div className="flex flex-col items-center gap-4">
             <div className="relative w-32 h-32 rounded-full overflow-hidden mb-4">
               <Image
                 src={placeholderImages[0].imageUrl}
@@ -40,33 +37,23 @@ export default function Home() {
               Creative Developer & Designer building beautiful and functional
               web experiences.
             </p>
-          </div>
-        </section>
-
-        <section className="container pb-8 md:py-12">
-          <h2 className="text-2xl font-bold mb-6">Featured Work</h2>
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {featuredWork.map((item) => (
-              <Card key={item.id}>
-                <CardContent className="p-0">
-                  <div className="relative aspect-video w-full overflow-hidden rounded-t-lg">
-                    <Image
-                      src={item.imageUrl}
-                      alt={item.description}
-                      fill
-                      style={{ objectFit: 'cover' }}
-                      data-ai-hint={item.imageHint}
-                    />
-                  </div>
-                  <div className="p-4">
-                    <h3 className="font-semibold">{item.description}</h3>
-                    <p className="text-sm text-muted-foreground">
-                      Project Description
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
+            <div className="flex gap-4 mt-4">
+              <Link href="#" passHref>
+                <Button variant="outline" size="icon">
+                  <Twitter />
+                </Button>
+              </Link>
+              <Link href="#" passHref>
+                <Button variant="outline" size="icon">
+                  <Github />
+                </Button>
+              </Link>
+              <Link href="#" passHref>
+                <Button variant="outline" size="icon">
+                  <Linkedin />
+                </Button>
+              </Link>
+            </div>
           </div>
         </section>
       </main>
