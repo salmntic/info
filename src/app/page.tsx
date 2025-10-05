@@ -46,7 +46,7 @@ export default function Home() {
 
           <Command cmd="bio" delay={3}>
             <p>Stargazer, Anime Enthusiast, Music Lover.</p>
-            <p>I love exploring the depths of the internet, which often leads to a completely ruined sleeping schedule, turning me into a sleepyhead all day long.</p>
+            <p>Love exploring the internet ruining his sleeping schedule and bee sleepyhead whole days all along</p>
             <p>I have hands-on experience with point-of-sale systems from my time at local restaurants.</p>
           </Command>
 
