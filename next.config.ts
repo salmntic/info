@@ -1,12 +1,10 @@
 import type {NextConfig} from 'next';
 
-const isProd = process.env.NODE_ENV === 'production';
-
 const nextConfig: NextConfig = {
-  /* config options here */
   output: 'export',
   trailingSlash: true,
-  assetPrefix: isProd ? '/salmntic.github.io/' : '',
+  // This is the key fix for GitHub Pages. It tells Next.js where to find the assets.
+  assetPrefix: process.env.NODE_ENV === 'production' ? '/salmntic.github.io/' : '',
   typescript: {
     ignoreBuildErrors: true,
   },
