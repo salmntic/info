@@ -7,18 +7,7 @@ import Link from 'next/link';
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground">
-      <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container flex h-14 max-w-screen-2xl items-center justify-between">
-          <a href="#" className="text-2xl font-bold">
-            SF
-          </a>
-          <nav className="flex items-center gap-4">
-            <Button variant="ghost">About</Button>
-            <Button variant="ghost">Contact</Button>
-          </nav>
-        </div>
-      </header>
-      <main className="flex-1">
+      <main className="flex-1 flex items-center justify-center">
         <section className="container grid items-center justify-center text-center gap-6 pb-8 pt-6 md:py-10">
           <div className="flex flex-col items-center gap-4">
             <div className="relative w-32 h-32 rounded-full overflow-hidden mb-4">
@@ -38,17 +27,17 @@ export default function Home() {
               web experiences.
             </p>
             <div className="flex gap-4 mt-4">
-              <Link href="#" passHref>
+              <Link href="#">
                 <Button variant="outline" size="icon">
                   <Twitter />
                 </Button>
               </Link>
-              <Link href="#" passHref>
+              <Link href="#">
                 <Button variant="outline" size="icon">
                   <Github />
                 </Button>
               </Link>
-              <Link href="#" passHref>
+              <Link href="#">
                 <Button variant="outline" size="icon">
                   <Linkedin />
                 </Button>
