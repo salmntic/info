@@ -23,8 +23,7 @@ export default function Home() {
               Salman Fares
             </h1>
             <p className="max-w-[700px] text-lg text-muted-foreground">
-              Creative Developer & Designer building beautiful and functional
-              web experiences.
+              Just a folk who loves to stare at the sky.
             </p>
             <div className="flex gap-4 mt-4">
               <Link href="#">
