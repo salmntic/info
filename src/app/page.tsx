@@ -64,7 +64,7 @@ export default function Home() {
           <Command cmd="business" delay={4}>
             <Link href="http://www.theqourt.shop" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-muted-foreground transition-colors hover:text-primary">
               <Briefcase className="h-5 w-5" />
-              <span>The Qourt Shop</span>
+              <span className="text-sm">The Qourt Shop</span>
             </Link>
           </Command>
 
