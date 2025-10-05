@@ -1,118 +1,82 @@
-import Image from 'next/image';
-import { placeholderImages } from '@/lib/placeholder-images';
-import { Github, Linkedin, Twitter, Facebook, Instagram, ArrowRight } from 'lucide-react';
+import { Github, Linkedin, Twitter, Facebook, Instagram, Briefcase } from 'lucide-react';
 import Link from 'next/link';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+
+const socialLinks = [
+  { icon: Twitter, href: 'https://twitter.com', label: 'twitter' },
+  { icon: Github, href: 'https://github.com', label: 'github' },
+  { icon: Linkedin, href: 'https://linkedin.com', label: 'linkedin' },
+  { icon: Facebook, href: 'https://www.facebook.com/salmontic', label: 'facebook' },
+  { icon: Instagram, href: 'https://www.instagram.com/salmontic', label: 'instagram' },
+];
+
+const Command = ({ cmd, children, delay = 0 }) => (
+  <div className="line" style={{ animationDelay: `${delay}s` }}>
+    <span className="text-primary">~/</span>
+    <span className="text-accent-foreground mr-2">$</span>
+    <span className="typewriter-text">{cmd}</span>
+    <div className="pl-4 pt-1 pb-3 text-muted-foreground">{children}</div>
+  </div>
+);
 
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen bg-background text-foreground">
-      <main className="flex-1">
-        <section className="container mx-auto px-4 py-12 md:py-20">
-          <div className="grid md:grid-cols-3 gap-12 items-start">
-            {/* Left Column */}
-            <div className="md:col-span-1 flex flex-col items-center md:items-start text-center md:text-left animate-fade-in-up">
-              <div className="relative w-40 h-40 rounded-full overflow-hidden mb-6 border-4 border-primary/20 shadow-lg">
-                <Image
-                  src={placeholderImages[0].imageUrl}
-                  alt="Salman Fares"
-                  fill
-                  style={{ objectFit: 'cover' }}
-                  data-ai-hint="portrait man"
-                />
-              </div>
-              <h1 className="text-4xl md:text-5xl font-bold tracking-tighter mb-2 bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent-foreground">
-                Salman Fares
-              </h1>
-              <p className="text-lg text-muted-foreground mb-6">
-                Stargazer, Anime Enthusiast, Music Lover.
-              </p>
-              <Card className="w-full text-left bg-card/50 border-border/50">
-                <CardHeader>
-                  <CardTitle>About Me</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4 text-muted-foreground">
-                  <p>
-                    I love exploring the depths of the internet, which often leads to a completely ruined sleeping schedule, turning me into a sleepyhead all day long.
-                  </p>
-                  <p>
-                    I have hands-on experience with point-of-sale systems from my time at local restaurants.
-                  </p>
-                </CardContent>
-              </Card>
-            </div>
-
-            {/* Right Column */}
-            <div className="md:col-span-2 space-y-8">
-              <div className="p-8 rounded-lg bg-card/30 border border-border/50 shadow-sm animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-                <h2 className="text-2xl font-bold mb-6">Connect with Me</h2>
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-                  <Link href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="group">
-                    <Card className="transition-all duration-300 hover:bg-accent hover:text-accent-foreground hover:shadow-lg hover:-translate-y-1">
-                      <CardContent className="p-4 flex items-center gap-4">
-                        <Twitter className="w-8 h-8 text-primary" />
-                        <span className="font-semibold">Twitter</span>
-                      </CardContent>
-                    </Card>
-                  </Link>
-                  <Link href="https://github.com" target="_blank" rel="noopener noreferrer" className="group">
-                    <Card className="transition-all duration-300 hover:bg-accent hover:text-accent-foreground hover:shadow-lg hover:-translate-y-1">
-                      <CardContent className="p-4 flex items-center gap-4">
-                        <Github className="w-8 h-8 text-primary" />
-                        <span className="font-semibold">Github</span>
-                      </CardContent>
-                    </Card>
-                  </Link>
-                  <Link href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="group">
-                    <Card className="transition-all duration-300 hover:bg-accent hover:text-accent-foreground hover:shadow-lg hover:-translate-y-1">
-                      <CardContent className="p-4 flex items-center gap-4">
-                        <Linkedin className="w-8 h-8 text-primary" />
-                        <span className="font-semibold">LinkedIn</span>
-                      </CardContent>
-                    </Card>
-                  </Link>
-                  <Link href="https://www.facebook.com/salmontic" target="_blank" rel="noopener noreferrer" className="group">
-                    <Card className="transition-all duration-300 hover:bg-accent hover:text-accent-foreground hover:shadow-lg hover:-translate-y-1">
-                      <CardContent className="p-4 flex items-center gap-4">
-                        <Facebook className="w-8 h-8 text-primary" />
-                        <span className="font-semibold">Facebook</span>
-                      </CardContent>
-                    </Card>
-                  </Link>
-                  <Link href="https://www.instagram.com/salmontic" target="_blank" rel="noopener noreferrer" className="group">
-                    <Card className="transition-all duration-300 hover:bg-accent hover:text-accent-foreground hover:shadow-lg hover:-translate-y-1">
-                      <CardContent className="p-4 flex items-center gap-4">
-                        <Instagram className="w-8 h-8 text-primary" />
-                        <span className="font-semibold">Instagram</span>
-                      </CardContent>
-                    </Card>
-                  </Link>
-                </div>
-              </div>
-
-              <div className="p-8 rounded-lg bg-card/30 border border-border/50 shadow-sm animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
-                <h2 className="text-2xl font-bold mb-4">My Business</h2>
-                <Link href="http://www.theqourt.shop" target="_blank" rel="noopener noreferrer" className="group">
-                  <Card className="transition-all duration-300 hover:border-primary/50 hover:shadow-lg">
-                    <CardContent className="p-6 flex items-center justify-between">
-                      <div>
-                        <p className="font-bold text-lg">The Qourt Shop</p>
-                        <p className="text-muted-foreground">www.theqourt.shop</p>
-                      </div>
-                      <ArrowRight className="w-6 h-6 text-primary transition-transform group-hover:translate-x-1" />
-                    </CardContent>
-                  </Card>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </section>
-      </main>
-      <footer className="py-6 border-t">
-        <div className="container text-center text-sm text-muted-foreground">
-          <p>Built by Salman Fares</p>
+    <div className="flex min-h-screen items-center justify-center bg-background p-4">
+      <div className="w-full max-w-4xl rounded-lg border-2 border-primary/20 bg-black/30 p-6 font-code shadow-[0_0_20px_theme(colors.primary/0.5)]">
+        {/* Terminal Header */}
+        <div className="mb-4 flex items-center gap-2">
+          <div className="h-3 w-3 rounded-full bg-red-500"></div>
+          <div className="h-3 w-3 rounded-full bg-yellow-500"></div>
+          <div className="h-3 w-3 rounded-full bg-green-500"></div>
         </div>
-      </footer>
+
+        {/* Terminal Body */}
+        <div className="space-y-2">
+          <div className="line">
+            <span className="text-primary">salman@portfolio</span>
+            <span className="text-accent-foreground">:</span>
+            <span className="text-blue-400">~</span>
+            <span className="text-accent-foreground">$</span>
+            <span className="ml-2 typewriter-text">cat about.txt</span>
+            <span className="cursor"></span>
+          </div>
+
+          <Command cmd="whoami" delay={2.5}>
+            <p>Salman Fares</p>
+          </Command>
+
+          <Command cmd="bio" delay={3}>
+            <p>Stargazer, Anime Enthusiast, Music Lover.</p>
+            <p>I love exploring the depths of the internet, which often leads to a completely ruined sleeping schedule, turning me into a sleepyhead all day long.</p>
+            <p>I have hands-on experience with point-of-sale systems from my time at local restaurants.</p>
+          </Command>
+
+          <Command cmd="socials" delay={3.5}>
+            <div className="flex flex-wrap gap-4">
+              {socialLinks.map(({ icon: Icon, href, label }) => (
+                <Link key={label} href={href} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-muted-foreground transition-colors hover:text-primary">
+                  <Icon className="h-5 w-5" />
+                  <span>{label}</span>
+                </Link>
+              ))}
+            </div>
+          </Command>
+
+          <Command cmd="business" delay={4}>
+            <Link href="http://www.theqourt.shop" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-muted-foreground transition-colors hover:text-primary">
+              <Briefcase className="h-5 w-5" />
+              <span>The Qourt Shop</span>
+            </Link>
+          </Command>
+
+           <div className="line" style={{ animationDelay: '4.5s' }}>
+            <span className="text-primary">salman@portfolio</span>
+            <span className="text-accent-foreground">:</span>
+            <span className="text-blue-400">~</span>
+            <span className="text-accent-foreground">$</span>
+            <span className="cursor ml-2"></span>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
