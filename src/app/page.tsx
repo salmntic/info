@@ -25,6 +25,17 @@ export default function Home() {
             <p className="max-w-[700px] text-lg text-muted-foreground">
               Loves exploring the internet, ruining his sleeping schedule and being a sleepyhead all day long.
             </p>
+            <p className="max-w-[700px] text-lg text-muted-foreground">
+              Running{' '}
+              <Link
+                href="http://www.theqourt.shop"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-primary"
+              >
+                www.theqourt.shop
+              </Link>
+            </p>
             <div className="flex gap-4 mt-4">
               <Link href="#">
                 <Button variant="outline" size="icon" className="transition-transform hover:scale-110">
