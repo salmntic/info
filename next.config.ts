@@ -1,10 +1,10 @@
+
 import type {NextConfig} from 'next';
 
 const nextConfig: NextConfig = {
   output: 'export',
-  trailingSlash: true,
   // This is the key fix for GitHub Pages. It tells Next.js where to find the assets.
-  assetPrefix: process.env.NODE_ENV === 'production' ? '/salmntic.github.io/' : '',
+  assetPrefix: process.env.NODE_ENV === 'production' ? '/salmntic.github.io/' : undefined,
   typescript: {
     ignoreBuildErrors: true,
   },
@@ -43,3 +43,5 @@ const nextConfig: NextConfig = {
 };
 
 export default nextConfig;
+
+    
